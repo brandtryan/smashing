@@ -1,73 +1,35 @@
-import { lineDurations } from './modules/controlAnimations/lineDurations.mjs';
-import { pg00Elements } from './modules/dom/elements.mjs';
+import { pgLines } from './modules/getElementsAttributesProperties/elements.mjs';
 import { animations_player } from './modules/controlAnimations/animations_player.mjs';
 import { crunchKeyframes, crunchTiming } from './modules/animations/crunchAnima.mjs';
 
-const pg00Words = pg00Elements.filter((element) => element.id.includes('wrd'));
-  
+console.log(pg00ln00.readingTime);
+
 // Create pg00 WORD animations and store the Animation objects in an array
 
-let all_animations = Object.create(null);
-let word_animations = [crunchKeyframes, crunchTiming];
+const wordsToAnimate = [pg00ln00wrd00, pg00ln00wrd04, pg00ln00wrd08, pg00ln00wrd09];
+const wordAnimations = [];
 
-const animationArrays = {
-	word: [word_animations],
-	// line: [line_animations],
-	// page: [page_animations],
-};
-
-Object.keys(animationArrays).forEach(function (name) {
-	all_animations[name] = pg00Words.map(function (element) {
-		return element.animate(animationArrays[name]);
-	});
-});
-
-word_animations = all_animations.word;
-
-// line_animations = all_animations.line;
-// page_animations = all_animations.page;
-
-const word_player = animations_player(word_animations);
-// const line_player = animations_player(line_animations);
-// const page_player = animations_player(page_animations);
-
-// all_animations.addEventListener('finish', function () {
-// 	word_player.stop();
-// });
+for (const word of wordsToAnimate) {
+	word.animate(crunchKeyframes, crunchTiming);
+	wordAnimations.push(word);
+}
 
 // Set duration of each word animation to be reading time divided by number of word animations
 
-const pg00Duration =
-	lineDurations.pg00ln00Duration +
-	lineDurations.pg00ln01Duration +
-	lineDurations.pg00ln02Duration +
-	lineDurations.pg00ln03Duration +
-	lineDurations.pg00ln04Duration +
-	lineDurations.pg00ln05Duration +
-	lineDurations.pg00ln06Duration +
-	lineDurations.pg00ln07Duration;
-
-console.log(pg00Duration);
-
-// word_animations.forEach((item) => item.effect.updateTiming({ duration: pg00Duration / word_animations.length }));
-word_animations.forEach((item) => item.effect.updateTiming({ duration: 800 }));
+// wordAnimations.forEach((animation) =>
+// 	animation.effect.updateTiming({ duration: pg00ln00.readingTime / wordsToAnimate.length })
+// );
 
 // Set startTime of each word animation so each starts after the previous animation, fitting to reading time
-word_animations[0].startTime = 1000.0;
 
-for (let i = 1; i < word_animations.length - 1; i++) {
-	// word_animations[i].startTime = word_animations[i - 1].startTime + pg00Duration / pg00Words.length;
-	word_animations[i].startTime = word_animations[i - 1].startTime + 2000;
+const player = animations_player(wordAnimations);
+player.play();
+player.duration = pg00ln00.readingTime / wordsToAnimate.length;
+wordAnimations[0].startTime = 1000.0;
+
+for (let i = 1; i < wordAnimations.length - 1; i++) {
+	wordAnimations[i].startTime = wordAnimations[i - 1].startTime + pg00ln00.readingTime / wordAnimations.length;
 }
-
-console.log(`pg00 Duration = ${pg00Duration}
-             pg00 Words = ${pg00Words.length}`);
-
-console.log(all_animations);
-
-
-// word_player.play();
-
 //Set duration of line animations based on average reading time
 // const s00p00ln00Duration = lineReadingTime(s00p00ln00Words);
 // const s00p00ln01Duration = lineReadingTime(s00p00ln01Words);

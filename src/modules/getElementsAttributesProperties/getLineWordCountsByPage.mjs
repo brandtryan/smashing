@@ -1,5 +1,5 @@
-import { lines, pages } from '../../dom/elements.mjs';
+import { lines } from './elements.mjs';
 
-export function getLineWordCounts(page) {
+export function getLineWordCountsByPage(page) {
 	return lines.filter((line) => line.id.includes(page)).map((line) => getLineWordCount(line));
 }
