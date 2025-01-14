@@ -27,18 +27,12 @@ body {
 	overflow: visible;
 }
 
-div.page {
+div {
 	width: 52ch;
 	min-height: 100vh;
 	border: 1px dashed dodgerblue;
 	content-visibility: auto;
 	padding: 38cqb 0;
-	overflow: visible;
-}
-
-div.paragraph {
-	border: 1px solid rgb(238, 19, 19);
-	content-visibility: auto;
 	overflow: visible;
 }
 
@@ -48,7 +42,7 @@ p {
 	overflow: visible;
 }
 
-span.word:hover::after {
+span:hover::after {
 	content: '(' attr(id) ')';
 	color: dodgerblue;
 	font-size: 1rem;
