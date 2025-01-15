@@ -4,6 +4,7 @@ import { vanishFrames } from './modules/animations/keyframeEffects/page/vanishFr
 import { lineBarkFrames } from './modules/animations/keyframeEffects/line/lineBarkFrames.mjs';
 import { wordCrunchFrames } from './modules/animations/keyframeEffects/word/wordCrunchFrames.mjs';
 import { rabbitDownKeyframes } from './modules/animations/rabbitDownKeyframes.mjs';
+import { overall_duration } from './modules/controlAnimations/overall_duration.mjs';
 
 console.log(pg00ln00.readingTime);
 
@@ -37,7 +38,9 @@ Object.keys(channels).forEach(function (name) {
 	);
 });
 
-const main_animation = new Animation(rabbitDownKeyframes);
+const main_animation = all_animations.page.find(function (animation) {
+	return animation.effect.target.isSameNode(document.body.firstElementChild);
+});
 const animatedElements = document.querySelectorAll(`[data-animated="true"]`);
 
 console.log(animatedElements);
