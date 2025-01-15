@@ -1,18 +1,18 @@
-import { getLineReadingTimeByLine } from './getLineReadingTimeByLine.mjs';
+import { getLineReadingTimes } from './getLineReadingTimes.mjs';
 
 const allElements = document.querySelectorAll('*');
 const allElementsArray = Array.from(allElements);
 export const [elements] = [allElementsArray];
 
-const allPagesCollection = document.getElementsByClassName('page');
+const allPagesCollection = document.getElementsByTagName('div');
 const allPagesArray = Array.from(allPagesCollection);
 export const [pages] = [allPagesArray];
 
-const allLinesCollection = document.getElementsByClassName('line');
+const allLinesCollection = document.getElementsByTagName('p');
 const allLinesArray = Array.from(allLinesCollection);
 export const [lines] = [allLinesArray];
 
-const allWordsCollection = document.getElementsByClassName('word');
+const allWordsCollection = document.getElementsByTagName('span');
 const allWordsArray = Array.from(allWordsCollection);
 export const [words] = [allWordsArray];
 
@@ -62,41 +62,41 @@ for (const element of elements) {
 	}
 }
 
-export const pg00Lines = pg00Elements.filter((element) => element.className === 'line');
-export const pg01Lines = pg01Elements.filter((element) => element.className === 'line');
-export const pg02Lines = pg02Elements.filter((element) => element.className === 'line');
-export const pg03Lines = pg03Elements.filter((element) => element.className === 'line');
-export const pg04Lines = pg04Elements.filter((element) => element.className === 'line');
-export const pg05Lines = pg05Elements.filter((element) => element.className === 'line');
-export const pg06Lines = pg06Elements.filter((element) => element.className === 'line');
-export const pg07Lines = pg07Elements.filter((element) => element.className === 'line');
-export const pg08Lines = pg08Elements.filter((element) => element.className === 'line');
-export const pg09Lines = pg09Elements.filter((element) => element.className === 'line');
-export const pg10Lines = pg10Elements.filter((element) => element.className === 'line');
-export const pg11Lines = pg11Elements.filter((element) => element.className === 'line');
-export const pg12Lines = pg12Elements.filter((element) => element.className === 'line');
-export const pg13Lines = pg13Elements.filter((element) => element.className === 'line');
-export const pg14Lines = pg14Elements.filter((element) => element.className === 'line');
-export const pg15Lines = pg15Elements.filter((element) => element.className === 'line');
-export const pg16Lines = pg16Elements.filter((element) => element.className === 'line');
-export const pg17Lines = pg17Elements.filter((element) => element.className === 'line');
-export const pg18Lines = pg18Elements.filter((element) => element.className === 'line');
-export const pg19Lines = pg19Elements.filter((element) => element.className === 'line');
-export const pg20Lines = pg20Elements.filter((element) => element.className === 'line');
-export const pg21Lines = pg21Elements.filter((element) => element.className === 'line');
-export const pg22Lines = pg22Elements.filter((element) => element.className === 'line');
-export const pg23Lines = pg23Elements.filter((element) => element.className === 'line');
-export const pg24Lines = pg24Elements.filter((element) => element.className === 'line');
-export const pg25Lines = pg25Elements.filter((element) => element.className === 'line');
-export const pg26Lines = pg26Elements.filter((element) => element.className === 'line');
-export const pg27Lines = pg27Elements.filter((element) => element.className === 'line');
-export const pg28Lines = pg28Elements.filter((element) => element.className === 'line');
-export const pg29Lines = pg29Elements.filter((element) => element.className === 'line');
-export const pg30Lines = pg30Elements.filter((element) => element.className === 'line');
-export const pg31Lines = pg31Elements.filter((element) => element.className === 'line');
-export const pg32Lines = pg32Elements.filter((element) => element.className === 'line');
-export const pg33Lines = pg33Elements.filter((element) => element.className === 'line');
-export const pg34Lines = pg34Elements.filter((element) => element.className === 'line');
+export const pg00Lines = Array.from(document.getElementsByTagName('p'));
+export const pg01Lines = Array.from(document.getElementsByTagName('p'));
+export const pg02Lines = Array.from(document.getElementsByTagName('p'));
+export const pg03Lines = Array.from(document.getElementsByTagName('p'));
+export const pg04Lines = Array.from(document.getElementsByTagName('p'));
+export const pg05Lines = Array.from(document.getElementsByTagName('p'));
+export const pg06Lines = Array.from(document.getElementsByTagName('p'));
+export const pg07Lines = Array.from(document.getElementsByTagName('p'));
+export const pg08Lines = Array.from(document.getElementsByTagName('p'));
+export const pg09Lines = Array.from(document.getElementsByTagName('p'));
+export const pg10Lines = Array.from(document.getElementsByTagName('p'));
+export const pg11Lines = Array.from(document.getElementsByTagName('p'));
+export const pg12Lines = Array.from(document.getElementsByTagName('p'));
+export const pg13Lines = Array.from(document.getElementsByTagName('p'));
+export const pg14Lines = Array.from(document.getElementsByTagName('p'));
+export const pg15Lines = Array.from(document.getElementsByTagName('p'));
+export const pg16Lines = Array.from(document.getElementsByTagName('p'));
+export const pg17Lines = Array.from(document.getElementsByTagName('p'));
+export const pg18Lines = Array.from(document.getElementsByTagName('p'));
+export const pg19Lines = Array.from(document.getElementsByTagName('p'));
+export const pg20Lines = Array.from(document.getElementsByTagName('p'));
+export const pg21Lines = Array.from(document.getElementsByTagName('p'));
+export const pg22Lines = Array.from(document.getElementsByTagName('p'));
+export const pg23Lines = Array.from(document.getElementsByTagName('p'));
+export const pg24Lines = Array.from(document.getElementsByTagName('p'));
+export const pg25Lines = Array.from(document.getElementsByTagName('p'));
+export const pg26Lines = Array.from(document.getElementsByTagName('p'));
+export const pg27Lines = Array.from(document.getElementsByTagName('p'));
+export const pg28Lines = Array.from(document.getElementsByTagName('p'));
+export const pg29Lines = Array.from(document.getElementsByTagName('p'));
+export const pg30Lines = Array.from(document.getElementsByTagName('p'));
+export const pg31Lines = Array.from(document.getElementsByTagName('p'));
+export const pg32Lines = Array.from(document.getElementsByTagName('p'));
+export const pg33Lines = Array.from(document.getElementsByTagName('p'));
+export const pg34Lines = Array.from(document.getElementsByTagName('p'));
 
 export const pgLines = [
 	pg00Lines,
@@ -138,6 +138,6 @@ export const pgLines = [
 
 pgLines.forEach((pgLineArray) => {
 	pgLineArray.forEach((line) => {
-		line.readingTime = getLineReadingTimeByLine(line);
+		line.readingTime = getLineReadingTimes(line);
 	});
 });

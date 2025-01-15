@@ -1,9 +1,11 @@
-import { pgLines } from './modules/getElementsAttributesProperties/elements.mjs';
+import { elements } from './modules/getElementsAttributesProperties/elements.mjs';
 import { animations_player } from './modules/controlAnimations/animations_player.mjs';
 import { vanishFrames } from './modules/animations/keyframeEffects/page/vanishFrames.mjs';
 import { lineBarkFrames } from './modules/animations/keyframeEffects/line/lineBarkFrames.mjs';
 import { wordCrunchFrames } from './modules/animations/keyframeEffects/word/wordCrunchFrames.mjs';
 import { rabbitDownKeyframes } from './modules/animations/rabbitDownKeyframes.mjs';
+
+console.log(pg00ln00.readingTime);
 
 const timing_options = {
 	duration: 1000,
