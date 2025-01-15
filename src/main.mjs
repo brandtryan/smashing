@@ -9,7 +9,6 @@ console.log(pg00ln00.readingTime);
 
 const timing_options = {
 	duration: 1000,
-	fill: 'forwards',
 };
 
 const pageKeyframeEffectsArray = [vanishFrames];
@@ -21,7 +20,8 @@ const channels = {
 	line: [lineKeyframeEffectsArray],
 	word: [wordKeyframeEffectsArray],
 };
-console.log(Object.keys(channels));
+
+console.log(wordKeyframeEffectsArray[0]);
 
 // imported function overall_duration(animation) {}
 // imported function animations_player(animations) {}
@@ -31,7 +31,6 @@ console.log(Object.keys(channels));
 let all_animations = Object.create(null);
 Object.keys(channels).forEach(function (name) {
 	all_animations[name] = Array.from(document.querySelectorAll(`[data-channel="${name}"][data-animated="true"]`)).map(
-		// all_animations[name] = Array.from(document.querySelectorAll(`[data-channel="${name}"].[data-animated="true"]`)).map(
 		function (element) {
 			return element.animate(channels[name], timing_options);
 		}
@@ -39,15 +38,21 @@ Object.keys(channels).forEach(function (name) {
 });
 
 const main_animation = new Animation(rabbitDownKeyframes);
+const animatedElements = document.querySelectorAll(`[data-animated="true"]`);
+
+console.log(animatedElements);
 
 const main_player = animations_player([main_animation, all_animations.page, all_animations.line, all_animations.word]);
-// main_player.pause;
-main_player.play;
 const page_player = animations_player(all_animations.page);
 const line_player = animations_player(all_animations.line);
 const word_player = animations_player(all_animations.word);
 
-main_animation.addEventListener('finish', () => main_player.stop());
+// main_player.play();
+// page_player.play();
+// line_player.play();
+// word_player.play();
+
+// main_animation.addEventListener('finish', () => main_player.stop());
 
 // Set duration of each word animation to be reading time divided by number of word animations
 

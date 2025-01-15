@@ -28,6 +28,10 @@ export function animations_player(animations) {
 			call_on_all(function (animation) {
 				animation.currentTime = time;
 			})(),
+		start_time: (time = document.timeline.currentTime) =>
+			call_on_all(function (animation) {
+				animation.startTime = time + 1000;
+			})(),
 		// 'stop' Reset the animation to the beginning and pause
 		stop: call_on_all(function (animation) {
 			animation.pause();
