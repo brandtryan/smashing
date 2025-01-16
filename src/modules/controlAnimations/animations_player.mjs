@@ -33,16 +33,16 @@ export function animations_player(animations) {
 			animation.pause();
 			animation.currentTime = 0;
 		}),
-		delay: set_timing_option('delay'),
-		direction: set_timing_option('direction'),
-		duration: set_timing_option('duration'),
-		easing: set_timing_option('easing'),
-		endDelay: set_timing_option('endDelay'),
-		fill: set_timing_option('fill'),
-		iterationStart: set_timing_option('iterationStart'),
 		iterations: set_timing_option('iterations'),
-		composite: set_timing_option('composite'),
-		iterationComposite: set_timing_option('iterationComposite'),
-		pseudoElement: set_timing_option('pseudoElement'),
+		duration: set_timing_option('duration'),
+		delay: set_timing_option('delay'),
+		endDelay: set_timing_option('endDelay'),
+		// direction: set_timing_option('direction'),
+		// easing: set_timing_option('easing'),
+		// fill: set_timing_option('fill'),
+		// iterationStart: set_timing_option('iterationStart'),
+		// composite: set_timing_option('composite'),
+		// iterationComposite: set_timing_option('iterationComposite'),
+		// pseudoElement: set_timing_option('pseudoElement'),
 	});
 }
