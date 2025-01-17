@@ -6,49 +6,47 @@ import { wordCrunchFrames } from './modules/animations/keyframeEffects/word/word
 import { rabbitDownKeyframes } from './modules/animations/rabbitDownKeyframes.mjs';
 import { overall_duration } from './modules/controlAnimations/overall_duration.mjs';
 
-console.log(pg00ln00.readingTime);
+const pg00Timeline = new DocumentTimeline({ originTime: document.timeline.currentTime });
 
 const timing_options = {
 	duration: 1000,
 };
 
-const pageKeyframeEffectsArray = [vanishFrames];
-const lineKeyframeEffectsArray = [lineBarkFrames];
-const wordKeyframeEffectsArray = [wordCrunchFrames];
+const pg00PageKeyframeEffectsArray = [vanishFrames];
+const pg00LineKeyframeEffectsArray = [lineBarkFrames];
+const pg00WordKeyframeEffectsArray = [wordCrunchFrames];
 
 const channels = {
-	page: [pageKeyframeEffectsArray],
-	line: [lineKeyframeEffectsArray],
-	word: [wordKeyframeEffectsArray],
+	page: [pg00PageKeyframeEffectsArray],
+	line: [pg00LineKeyframeEffectsArray],
+	word: [pg00WordKeyframeEffectsArray],
 };
-
-console.log(wordKeyframeEffectsArray[0]);
 
 // imported function overall_duration(animation) {}
 // imported function animations_player(animations) {}
 
 // Start animations and store them
 
-let all_animations = Object.create(null);
+let all_pg00Animations = Object.create(null);
 Object.keys(channels).forEach(function (name) {
-	all_animations[name] = Array.from(document.querySelectorAll(`[data-channel="${name}"][data-animated="true"]`)).map(
+	all_pg00Animations[name] = Array.from(pg00.querySelectorAll(`[data-channel="${name}"][data-animated="true"]`)).map(
 		function (element) {
-			return element.animate(channels[name], timing_options);
+			return element.animate(channels[name], timing_options, pg00Timeline);
 		}
 	);
 });
 
-const main_animation = all_animations.page.find(function (animation) {
-	return animation.effect.target.isSameNode(document.body.firstElementChild);
+Object.keys(channels).forEach(function (name) {
+	all_pg00Animations[name].map((animation) => (animation.timeline = pg00Timeline));
 });
-const animatedElements = document.querySelectorAll(`[data-animated="true"]`);
 
-console.log(animatedElements);
+const main_player = animations_player([all_pg00Animations.page, all_pg00Animations.line, all_pg00Animations.word]);
 
-const main_player = animations_player([main_animation, all_animations.page, all_animations.line, all_animations.word]);
-const page_player = animations_player(all_animations.page);
-const line_player = animations_player(all_animations.line);
-const word_player = animations_player(all_animations.word);
+console.log(all_pg00Animations);
+
+const page_player = animations_player(all_pg00Animations.page);
+const line_player = animations_player(all_pg00Animations.line);
+const word_player = animations_player(all_pg00Animations.word);
 
 // main_player.play();
 // page_player.play();
